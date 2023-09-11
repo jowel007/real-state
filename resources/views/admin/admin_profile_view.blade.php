@@ -1,7 +1,9 @@
 @extends('admin.admin_dashboard')
 @section('admin')
-    <div class="page-content">
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <div class="page-content">
 
         <div class="row profile-body">
             <!-- left wrapper start -->
@@ -58,29 +60,44 @@
                 <div class="row">
                     <div class="card-body">
 
-                        <h6 class="card-title">Basic Form</h6>
+                        <h6 class="card-title">Update Admin Profile</h6>
 
                         <form class="forms-sample">
                             <div class="mb-3">
-                                <label for="exampleInputUsername1" class="form-label">Username</label>
-                                <input type="text" class="form-control" id="exampleInputUsername1" autocomplete="off" placeholder="Username">
+                                <label for="exampleInputUsername1" class="form-label">User Name</label>
+                                <input type="text" class="form-control" value="{{ $profileData->username }}" name="username" id="exampleInputUsername1" autocomplete="off" >
                             </div>
                             <div class="mb-3">
-                                <label for="exampleInputEmail1" class="form-label">Email address</label>
-                                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+                                <label for="exampleInputUsername1" class="form-label">Name</label>
+                                <input type="text" class="form-control" value="{{ $profileData->name }}" name="name" id="exampleInputUsername1" autocomplete="off" >
                             </div>
                             <div class="mb-3">
-                                <label for="exampleInputPassword1" class="form-label">Password</label>
-                                <input type="password" class="form-control" id="exampleInputPassword1" autocomplete="off" placeholder="Password">
+                                <label for="exampleInputEmail1" class="form-label">Email</label>
+                                <input type="email" class="form-control" value="{{ $profileData->email }}" name="email" id="exampleInputEmail1" >
                             </div>
-                            <div class="form-check mb-3">
-                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                <label class="form-check-label" for="exampleCheck1">
-                                    Remember me
-                                </label>
+
+                            <div class="mb-3">
+                                <label for="exampleInputEmail1" class="form-label">Phone</label>
+                                <input type="email" class="form-control" value="{{ $profileData->phone }}" name="phone" id="exampleInputEmail1" >
                             </div>
-                            <button type="submit" class="btn btn-primary me-2">Submit</button>
-                            <button class="btn btn-secondary">Cancel</button>
+
+                            <div class="mb-3">
+                                <label for="exampleInputEmail1" class="form-label">Address</label>
+                                <input type="email" class="form-control" value="{{ $profileData->address }}" name="address" id="exampleInputEmail1" >
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="exampleInputEmail1" class="form-label">Photo</label>
+                                <input type="file" class="form-control" value="{{ $profileData->address }}" name="photo" id="image" >
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="exampleInputEmail1" class="form-label"></label>
+                                <img id="showImage" class="wd-100 rounded-circle" src="{{ (!empty($profileData->photo)) ? url('upload/admin_images/'.$profileData->photo) : url('upload/no_image.jpg') }}" alt="profile">
+                            </div>
+
+                            <button type="submit" class="btn btn-primary me-2">Save Changes</button>
+
                         </form>
 
                     </div>
@@ -92,4 +109,20 @@
         </div>
 
     </div>
+
+{{--if any image select and show image --}}
+
+    <script type="text/javascript">
+        $(document).ready(function (){
+            $('#image').change(function (e){
+                var reader = new FileReader();
+                reader.onload = function (e){
+                    $('#showImage').attr('src',e.target.result);
+                }
+                reader.readAsDataURL(e.target.files['0']);
+            });
+        });
+    </script>
+
+
 @endsection
