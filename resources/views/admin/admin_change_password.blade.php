@@ -62,28 +62,28 @@
 
                         <h6 class="card-title"> Admin Change Password</h6>
                         &nbsp;&nbsp;
-                        <form class="forms-sample" method="post" action="{{ route('admin.profile.store') }}" enctype="multipart/form-data">
+                        <form class="forms-sample" method="post" action="{{ route('admin.update.password') }}" enctype="multipart/form-data">
                             @csrf
 
                             <div class="mb-3">
-                                <label for="exampleInputUsername1" class="form-label">Old Password</label>
-                                <input type="password" class="form-control @error('old_password') is-valid @enderror" name="old_password" id="old_password" autocomplete="off" >
+                                <label for="exampleInputEmail1" class="form-label">Old Password  </label>
+                                <input type="password" name="old_password" class="form-control @error('old_password') is-invalid @enderror " id="old_password" autocomplete="off" >
                                 @error('old_password')
                                 <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
 
                             <div class="mb-3">
-                                <label for="exampleInputUsername1" class="form-label">New Password</label>
-                                <input type="password" class="form-control @error('new_password') is-valid @enderror" name="new_password" id="old_password" autocomplete="off" >
+                                <label for="exampleInputEmail1" class="form-label">New Password  </label>
+                                <input type="password" name="new_password" class="form-control @error('new_password') is-invalid @enderror " id="new_password" autocomplete="off" >
                                 @error('new_password')
                                 <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
 
                             <div class="mb-3">
-                                <label for="exampleInputUsername1" class="form-label">Confirm New Password</label>
-                                <input type="password" class="form-control" name="confirm_password" id="confirm_password" autocomplete="off" >
+                                <label for="exampleInputEmail1" class="form-label">Confirm New Password  </label>
+                                <input type="password" name="new_password_confirmation" class="form-control" id="new_password_confirmation" autocomplete="off" >
 
                             </div>
 
