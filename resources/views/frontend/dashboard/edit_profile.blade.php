@@ -2,7 +2,7 @@
 @section('main')
 
 <!--Page Title-->
-<section class="page-title centred" style="background-image: url({{ asset('frontend/assets/images/background/page-title-5.jpg') }});">
+<section class="page-title centred" style="background-image: url({{ asset('frontend') }}/assets/images/background/page-title-5.jpg);">
     <div class="auto-container">
        <div class="content-box clearfix">
           <h1>User Profile </h1>
@@ -18,12 +18,10 @@
  <section class="sidebar-page-container blog-details sec-pad-2">
     <div class="auto-container">
        <div class="row clearfix">
-
         @php
             $id = Auth::user()->id;
             $userData = App\Models\User::find($id);
         @endphp
-
           <div class="col-lg-4 col-md-12 col-sm-12 sidebar-side">
              <div class="blog-sidebar">
                 <div class="sidebar-widget post-widget">
@@ -35,7 +33,7 @@
                          <figure class="post-thumb"><a href="blog-details.html">
                             <img src="{{ (!empty($userData->photo)) ? url('upload/users_images/'.$userData->photo) : url('upload/no_image.jpg') }}" alt=""></a>
                          </figure>
-                         <h5><a href="blog-details.html">{{ $userData->name }}</a></h5>
+                         <h5><a href="blog-details.html">{{ $userData->name }} </a></h5>
                          <p>{{ $userData->email }} </p>
                       </div>
                    </div>
@@ -53,44 +51,43 @@
                 <div class="news-block-one">
                    <div class="inner-box">
                       <div class="lower-content">
-                         <h3>Including Animation In Your Design System.</h3>
+                        
                          <ul class="post-info clearfix">
                             <li class="author-box">
-                               <figure class="author-thumb"><img src="assets/images/news/author-1.jpg" alt=""></figure>
-                               
+                               <figure class="author-thumb"><img src="{{ (!empty($userData->photo)) ? url('upload/users_images/'.$userData->photo) : url('upload/no_image.jpg') }}" alt=""></figure>
+                               <h5><a href="blog-details.html">{{ $userData->name }}</a></h5>
                             </li>
-                           
+                            <li>{{ $userData->email }}</li>
                          </ul>
-                         <div class="row">
-                            <div class="col-lg-4">
-                               <div class="card-body" style="background-color: #1baf65;">
-                                  <h1 class="card-title" style="color: white; font-weight: bold;">0</h1>
-                                  <h5 class="card-text"style="color: white;"> Approved properties</h5>
-                               </div>
+                         <form action="signin.html" method="post" class="default-form">
+                            <div class="form-group">
+                                <label>User Name</label>
+                                <input type="text" name="username" value="{{ $userData->username }}" required="">
+                             </div>
+                            <div class="form-group">
+                               <label>Name</label>
+                               <input type="text" name="name" value="{{ $userData->name }}" required="">
                             </div>
-                            <div class="col-md-4">
-                               <div class="card-body" style="background-color: #ffc107;">
-                                  <h1 class="card-title" style="color: white; font-weight: bold; ">0</h1>
-                                  <h5 class="card-text"style="color: white;"> Pending approve properties</h5>
-                               </div>
+                            <div class="form-group">
+                               <label>Email address</label>
+                               <input type="email" name="email" value="{{ $userData->email }}" required="">
                             </div>
-                            <div class="col-md-4">
-                               <div class="card-body" style="background-color: #002758;">
-                                  <h1 class="card-title" style="color: white; font-weight: bold;">0</h1>
-                                  <h5 class="card-text"style="color: white; "> Rejected properties</h5>
-                               </div>
+                            <div class="form-group">
+                               <label>Phone</label>
+                               <input type="text" name="phone" value="{{ $userData->phone }}" required="">
                             </div>
-                         </div>
-                      </div>
-                   </div>
-                </div>
-             </div>
-             <div class="blog-details-content">
-                <div class="news-block-one">
-                   <div class="inner-box">
-                      <div class="lower-content">
-                         <h3>Activity Logs</h3>
-                         <hr>
+                            <div class="form-group">
+                                <label>Address</label>
+                                <input type="text" name="address" value="{{ $userData->address }}" required="">
+                             </div>
+                            <div class="form-group">
+                               <label for="formFile" class="form-label">Default file input example</label>
+                               <input class="form-control" name="photo" type="file" id="formFile">
+                            </div>
+                            <div class="form-group message-btn">
+                               <button type="submit" class="theme-btn btn-one">Save Changes </button>
+                            </div>
+                         </form>
                       </div>
                    </div>
                 </div>
@@ -126,5 +123,4 @@
  </section>
  <!-- subscribe-section end -->
  
-
-@endsection
+ @endsection
