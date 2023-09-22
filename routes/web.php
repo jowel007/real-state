@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AgentController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\Backend\PropertyTypeController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -49,6 +50,13 @@ Route::middleware(['auth','role:admin'])->group(function (){
     Route::post('/admin/profile/store', [AdminController::class, 'AdminProfileStore'])->name('admin.profile.store');
     Route::get('/admin/change/password', [AdminController::class, 'AdminChangePassword'])->name('admin.change.password');
     Route::post('/admin/update/password', [AdminController::class, 'AdminUpdatePassword'])->name('admin.update.password');
+
+    //property type all route
+    Route::controller(PropertyTypeController::class)->group(function(){
+
+        Route::get('/all/property', 'AllProperty')->name('all.property');
+
+    });
 
 }); //end group admin middleware
 
