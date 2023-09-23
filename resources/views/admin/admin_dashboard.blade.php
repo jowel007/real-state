@@ -97,6 +97,9 @@ License: For each use you must have a valid license purchased only from above li
 
 <!-- End plugin js for this page -->
 
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<script src="{{ asset('backend/assets/js/code/code.js') }}"></script>
+
 {{-- toster script --}}
 
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
