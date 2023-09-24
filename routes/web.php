@@ -62,6 +62,17 @@ Route::middleware(['auth','role:admin'])->group(function (){
         Route::get('/delete/property/{id}', 'DeleteProperty')->name('delete.property');
     });
 
+    //Amenities type all route
+    Route::controller(PropertyTypeController::class)->group(function(){
+
+        Route::get('/all/amenities', 'AllAmenities')->name('all.amenities');
+        Route::get('/add/amenities', 'AddAmenities')->name('add.amenities');
+        Route::post('/store/amenities', 'StoreAmenities')->name('store.amenities');
+        Route::get('/edit/amenities/{id}', 'EditAmenities')->name('edit.amenities');
+        Route::post('/update/amenities', 'UpdateAmenities')->name('update.amenities');
+        Route::get('/delete/amenities/{id}', 'DeleteAmenities')->name('delete.amenities');
+    });
+
 }); //end group admin middleware
 
 Route::get('/admin/login', [AdminController::class, 'AdminLogin'])->name('admin.login');

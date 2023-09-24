@@ -71,6 +71,7 @@ License: For each use you must have a valid license purchased only from above li
 
 <!-- core:js -->
 <script src="{{ asset('backend/assets/vendors/core/core.js') }}"></script>
+<script src="{{ asset('backend/assets/js/code/validate.min.js') }}"></script>
 <!-- endinject -->
 
 <!-- Plugin js for this page -->
