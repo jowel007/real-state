@@ -16,5 +16,11 @@ class PropertyController extends Controller
         return view('backend.property.all_property',compact('property'));
     }
 
+    public function AddProperty(){
+
+        return view('backend.property.add_property');
+
+    }// End Method 
+
     
 }
