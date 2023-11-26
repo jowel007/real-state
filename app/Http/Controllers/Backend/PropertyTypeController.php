@@ -10,18 +10,18 @@ use App\Models\Amenities;
 
 class PropertyTypeController extends Controller
 {
-    public function AllProperty()
+    public function AllType()
     {
         $property = PropertyType::latest()->get();
-        return view ('backend.property.all_property',compact('property'));
+        return view ('backend.property_type.all_property',compact('property'));
     }
 
-    public function AddProperty()
+    public function AddType()
     {
-        return view ('backend.property.add_property');
+        return view ('backend.property_type.add_property');
     }
 
-    public function StoreProperty(Request $request)
+    public function StoreType(Request $request)
     {
         $request->validate([
             'type_name' => 'required|unique:property_types|max:200',
@@ -41,13 +41,13 @@ class PropertyTypeController extends Controller
         return redirect()->route('all.property')->with($notification);
     }
 
-    public function EditProperty($id)
+    public function EditType($id)
     {
         $property = PropertyType::findOrFail($id);
-        return view ('backend.property.edit_property',compact('property'));
+        return view ('backend.property_type.edit_property',compact('property'));
     }
 
-    public function UpdateProperty(Request $request)
+    public function UpdateType(Request $request)
     {
         $pid = $request->id;   
 
@@ -64,7 +64,7 @@ class PropertyTypeController extends Controller
         return redirect()->route('all.property')->with($notification);
     }
 
-    public function DeleteProperty($id){
+    public function DeleteType($id){
 
         PropertyType::findOrFail($id)->delete();
 

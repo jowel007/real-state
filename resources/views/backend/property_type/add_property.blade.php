@@ -14,7 +14,7 @@
 
                         <h6 class="card-title"> Add Property Type</h6>
                         &nbsp;&nbsp;
-                        <form class="forms-sample" method="post" action="{{ route('store.property') }}">
+                        <form class="forms-sample" method="post" action="{{ route('store.type') }}">
                             @csrf
 
                             <div class="mb-3">

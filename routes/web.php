@@ -6,6 +6,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AgentController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\Backend\PropertyTypeController;
+use App\Http\Controllers\Backend\PropertyController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -54,12 +55,12 @@ Route::middleware(['auth','role:admin'])->group(function (){
     //property type all route
     Route::controller(PropertyTypeController::class)->group(function(){
 
-        Route::get('/all/property', 'AllProperty')->name('all.property');
-        Route::get('/add/property', 'AddProperty')->name('add.property');
-        Route::post('/store/property', 'StoreProperty')->name('store.property');
-        Route::get('/edit/property/{id}', 'EditProperty')->name('edit.property');
-        Route::post('/update/property', 'UpdateProperty')->name('update.property');
-        Route::get('/delete/property/{id}', 'DeleteProperty')->name('delete.property');
+        Route::get('/all/type', 'AllType')->name('all.type');
+        Route::get('/add/type', 'AddType')->name('add.type');
+        Route::post('/store/type', 'StoreType')->name('store.type');
+        Route::get('/edit/type/{id}', 'EditType')->name('edit.type');
+        Route::post('/update/type', 'UpdateType')->name('update.type');
+        Route::get('/delete/type/{id}', 'DeleteType')->name('delete.type');
     });
 
     //Amenities type all route
@@ -72,6 +73,18 @@ Route::middleware(['auth','role:admin'])->group(function (){
         Route::post('/update/amenities', 'UpdateAmenities')->name('update.amenities');
         Route::get('/delete/amenities/{id}', 'DeleteAmenities')->name('delete.amenities');
     });
+
+    Route::controller(PropertyController::class)->group(function(){
+
+        Route::get('/all/property', 'AllProperty')->name('all.property');
+        // Route::get('/add/amenities', 'AddAmenities')->name('add.amenities');
+        // Route::post('/store/amenities', 'StoreAmenities')->name('store.amenities');
+        // Route::get('/edit/amenities/{id}', 'EditAmenities')->name('edit.amenities');
+        // Route::post('/update/amenities', 'UpdateAmenities')->name('update.amenities');
+        // Route::get('/delete/amenities/{id}', 'DeleteAmenities')->name('delete.amenities');
+    });
+
+
 
 }); //end group admin middleware
 
