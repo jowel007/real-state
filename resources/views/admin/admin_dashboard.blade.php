@@ -120,6 +120,11 @@ License: For each use you must have a valid license purchased only from above li
 
     <!-- Input Tags -->
 
+    <!-- tinymce -->
+    <script src="{{ asset('backend/assets/vendors/tinymce/tinymce.min.js') }}"></script>
+    <script src="{{ asset('backend/assets/js/tinymce.js') }}"></script>
+<!-- tinymce -->
+
 {{-- toster script --}}
 
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
