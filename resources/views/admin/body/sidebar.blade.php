@@ -60,7 +60,7 @@
                     <span class="link-title">Property</span>
                     <i class="link-arrow" data-feather="chevron-down"></i>
                 </a>
-                <div class="collapse" id="amenities">
+                <div class="collapse" id="property">
                     <ul class="nav sub-menu">
                         <li class="nav-item">
                             <a href="{{ route('all.property') }}" class="nav-link">All Property</a>
