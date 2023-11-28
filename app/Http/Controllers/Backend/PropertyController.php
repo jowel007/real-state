@@ -10,6 +10,7 @@ use App\Models\MultiImg;
 use App\Models\PropertyType;
 use App\Models\Amenities;
 use App\Models\user;
+use Intervention\Image\Facades\Image;
 
 class PropertyController extends Controller
 {
@@ -27,6 +28,17 @@ class PropertyController extends Controller
         return view('backend.property.add_property',compact('propertytype','amenities','activeAgent'));
 
     }// End Method 
+
+    // insert data in database
+
+    public function StoreProperty(Request $request){
+        $image = $request->file('property_thambnail');
+        $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
+        Image::make($image)->resize(370,250)->save('upload/property/thambnail/'.$name_gen);
+        $save_url = 'upload/property/thambnail'.$name_gen;
+
+
+    }
 
     
 }
