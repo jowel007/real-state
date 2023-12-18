@@ -13,7 +13,7 @@ use App\Models\Amenities;
 use App\Models\user;
 use Intervention\Image\Facades\Image;
 use Haruncpi\LaravelIdGenerator\IdGenerator;
-use Carbon\Carbon;
+
 
 class PropertyController extends Controller
 {
@@ -84,9 +84,28 @@ class PropertyController extends Controller
             'property_thambnail' => $save_url,
             'created_at' => Carbon::now(),
 
-
-
         ]);
+
+        /// Multiple Image Upload From Here ////
+
+        $images = $request->file('multi_img');
+        foreach($images as $img){
+
+            $make_name = hexdec(uniqid()).'.'.$img->getClientOriginalExtension();
+            Image::make($img)->resize(770,520)->save('upload/property/multi-image/'.$make_name);
+            $uploadPath = 'upload/property/multi-image/'.$make_name;
+
+            MultiImage::insert([
+
+                'property_id' => $property_id,
+                'photo_name' => $uploadPath,
+                'created_at' => Carbon::now(),
+
+            ]);
+        } // End Foreach
+
+        /// End Multiple Image Upload From Here ////
+
 
     }
 
