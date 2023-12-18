@@ -16,7 +16,7 @@
        <div class="card">
     <div class="card-body">
         <h6 class="card-title">Add Property </h6>
-            
+
 <form method="post" action="{{ route('store.property') }}" id="myForm" enctype="multipart/form-data">
     @csrf
 
@@ -33,7 +33,7 @@
                <select name="property_status" class="form-select" id="exampleFormControlSelect1">
                     <option selected="" disabled="">Select Status</option>
                     <option value="rent">For Rent</option>
-                    <option value="buy">For Buy</option> 
+                    <option value="buy">For Buy</option>
                 </select>
             </div>
         </div><!-- Col -->
@@ -214,7 +214,7 @@
     <div class="col-sm-12">
         <div class="mb-3">
             <label class="form-label">Short Description</label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            <textarea class="form-control" name="short_descp" id="exampleFormControlTextarea1" rows="3"></textarea>
         </div>
     </div><!-- Col -->
 
@@ -222,7 +222,7 @@
     <div class="col-sm-12">
         <div class="mb-3">
             <label class="form-label">Long Description</label>
-            <textarea class="form-control" name="tinymce" id="tinymceExample" rows="10"></textarea>
+            <textarea class="form-control" name="long_descp" id="tinymceExample" rows="10"></textarea>
         </div>
     </div><!-- Col -->
 
@@ -232,7 +232,7 @@
         <div class="form-check form-check-inline">
             <input type="checkbox" name="featured" value="1" class="form-check-input" id="checkInline1">
             <label class="form-check-label" for="checkInline1">
-               Features Property 
+               Features Property
             </label>
         </div>
 
@@ -240,7 +240,7 @@
      <div class="form-check form-check-inline">
         <input type="checkbox" name="hot" value="1" class="form-check-input" id="checkInline">
             <label class="form-check-label" for="checkInline">
-                Hot Property 
+                Hot Property
             </label>
         </div>
     </div>
@@ -308,7 +308,7 @@
        <div class="whole_extra_item_delete" id="whole_extra_item_delete">
           <div class="container mt-2">
              <div class="row">
- 
+
                 <div class="form-group col-md-4">
                    <label for="facility_name">Facilities</label>
                    <select name="facility_name[]" id="facility_name" class="form-control">
@@ -338,10 +338,10 @@
           </div>
        </div>
     </div>
- </div>      
- 
- 
- 
+ </div>
+
+
+
              <!----For Section-------->
  <script type="text/javascript">
     $(document).ready(function(){
@@ -381,7 +381,7 @@
                  ptype_id: {
                     required : true,
                 },
-                
+
             },
             messages :{
                 property_name: {
@@ -398,10 +398,10 @@
                 },
                 ptype_id: {
                     required : 'Please Select Property Type',
-                }, 
-                 
+                },
+
             },
-            errorElement : 'span', 
+            errorElement : 'span',
             errorPlacement: function (error,element) {
                 error.addClass('invalid-feedback');
                 element.closest('.form-group').append(error);
@@ -428,40 +428,40 @@
             };
             reader.readAsDataURL(input.files[0]);
         }
-    } 
+    }
  </script>
 
 
- <script> 
- 
+ <script>
+
   $(document).ready(function(){
    $('#multiImg').on('change', function(){ //on file input change
       if (window.File && window.FileReader && window.FileList && window.Blob) //check File API supported browser
       {
           var data = $(this)[0].files; //this file data
-           
+
           $.each(data, function(index, file){ //loop though each file
               if(/(\.|\/)(gif|jpe?g|png|webp)$/i.test(file.type)){ //check supported file type
                   var fRead = new FileReader(); //new filereader
                   fRead.onload = (function(file){ //trigger function on successful read
                   return function(e) {
                       var img = $('<img/>').addClass('thumb').attr('src', e.target.result) .width(100)
-                  .height(80); //create image element 
+                  .height(80); //create image element
                       $('#preview_img').append(img); //append image to output element
                   };
                   })(file);
                   fRead.readAsDataURL(file); //URL representing the file's data.
               }
           });
-           
+
       }else{
           alert("Your browser doesn't support File API!"); //if File API is absent
       }
    });
   });
-   
+
   </script>
-    
+
 
 
 @endsection
