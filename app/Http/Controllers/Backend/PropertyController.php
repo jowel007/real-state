@@ -229,7 +229,7 @@ class PropertyController extends Controller
     }// End Method 
 
 
-    // multiimage 
+    // multiimage  update
 
     public function UpdatePropertyMultiimage(Request $request){
 
@@ -260,6 +260,23 @@ class PropertyController extends Controller
 
         return redirect()->back()->with($notification); 
 
+
+    }// End Method 
+
+        // multi image delete
+    public function PropertyMultiImageDelete($id){
+
+        $oldImg = MultiImg::findOrFail($id);
+        unlink($oldImg->photo_name);
+
+        MultiImg::findOrFail($id)->delete();
+
+        $notification = array(
+            'message' => 'Property Multi Image Deleted Successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->back()->with($notification); 
 
     }// End Method 
 
