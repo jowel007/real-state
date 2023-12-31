@@ -11,6 +11,7 @@ use App\Models\MultiImg;
 use App\Models\PropertyType;
 use App\Models\Amenities;
 use App\Models\user;
+// use App\Models\MultiImg;
 use Intervention\Image\Facades\Image;
 use Haruncpi\LaravelIdGenerator\IdGenerator;
 
@@ -137,7 +138,9 @@ class PropertyController extends Controller
         $type = $property->amenities_id;
         $property_ami = explode(',', $type);
 
-        return view('backend.property.edit_property',compact('property','propertytype','amenities','activeAgent','property_ami'));
+        $multiImage = MultiImg::where('property_id',$id)->get();
+
+        return view('backend.property.edit_property',compact('property','propertytype','amenities','activeAgent','property_ami','multiImage'));
     
     } //end method
 
