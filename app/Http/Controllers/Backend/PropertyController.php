@@ -39,7 +39,7 @@ class PropertyController extends Controller
         $image = $request->file('property_thambnail');
         $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
         Image::make($image)->resize(370,250)->save('upload/property/thambnail/'.$name_gen);
-        $save_url = 'upload/property/thambnail'.$name_gen;
+        $save_url = 'upload/property/thambnail/'.$name_gen;
 
         $amen = $request->amenities_id;
         $amenities = implode(",",$amen);
@@ -126,6 +126,14 @@ class PropertyController extends Controller
         return redirect()->route('all.property')->with($notification);
 
 
+    } //end method
+
+    public function EditProperty($id){
+        $property = Property::findOrFail($id);
+        $propertytype = PropertyType::latest()->get();
+        $amenities = Amenities::latest()->get();
+        $activeAgent = User::where('status','active')->where('role','agent')->latest()->get();
+        return view('backend.property.edit_property',compact('property','propertytype','amenities','activeAgent'));
     }
 
 
