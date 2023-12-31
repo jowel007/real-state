@@ -83,6 +83,7 @@ Route::middleware(['auth','role:admin'])->group(function (){
         Route::post('/update/property', 'UpdateProperty')->name('update.property');
 
         Route::post('/update/property/thambnail', 'UpdatePropertyThambnail')->name('update.property.thambnail');
+        Route::post('/update/property/multiimage', 'UpdatePropertyMultiimage')->name('update.property.multiimage');
 
         Route::get('/delete/property/{id}', 'DeleteProperty')->name('delete.property');
     });
