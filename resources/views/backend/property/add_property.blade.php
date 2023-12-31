@@ -204,7 +204,7 @@
                 <select name="agent_id" class="form-select" id="exampleFormControlSelect1">
                     <option selected="" disabled="">Select Type</option>
                     @foreach ($activeAgent as $agent)
-                        <option value="rent">{{ $agent->name }}</option>
+                        <option value="{{ $agent->id }}">{{ $agent->name }}</option>
                     @endforeach
                 </select>
             </div>
