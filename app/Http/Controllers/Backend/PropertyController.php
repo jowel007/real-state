@@ -140,7 +140,9 @@ class PropertyController extends Controller
 
         $multiImage = MultiImg::where('property_id',$id)->get();
 
-        return view('backend.property.edit_property',compact('property','propertytype','amenities','activeAgent','property_ami','multiImage'));
+        $facilities = Facility::where('property_id',$id)->get();
+
+        return view('backend.property.edit_property',compact('property','propertytype','amenities','activeAgent','property_ami','multiImage','facilities'));
     
     } //end method
 

@@ -302,7 +302,7 @@
 			</div>
 
 
-            <!--========== Start of add multiple class with ajax ==============-->
+            <!--========== Start of add multiple facility class with ajax ==============-->
 <div style="visibility: hidden">
     <div class="whole_extra_item_add" id="whole_extra_item_add">
        <div class="whole_extra_item_delete" id="whole_extra_item_delete">
