@@ -81,13 +81,16 @@ Route::middleware(['auth','role:admin'])->group(function (){
         Route::post('/store/property', 'StoreProperty')->name('store.property');
         Route::get('/edit/property/{id}', 'EditProperty')->name('edit.property');
         Route::post('/update/property', 'UpdateProperty')->name('update.property');
-
+        Route::get('/delete/property/{id}', 'DeleteProperty')->name('delete.property');
+        
         Route::post('/update/property/thambnail', 'UpdatePropertyThambnail')->name('update.property.thambnail');
         Route::post('/update/property/multiimage', 'UpdatePropertyMultiimage')->name('update.property.multiimage');
         Route::get('/property/multiimg/delete/{id}', 'PropertyMultiImageDelete')->name('property.multiimg.delete');
         Route::post('/store/new/multiimage', 'StoreNewMultiimage')->name('store.new.multiimage');
 
-        Route::get('/delete/property/{id}', 'DeleteProperty')->name('delete.property');
+        Route::post('/update/property/facilities', 'UpdatePropertyFacilities')->name('update.property.facilities');
+
+        
     });
 
 
