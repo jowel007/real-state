@@ -151,13 +151,13 @@
 
                     <tr> 
                         <td>Agent </td>
-                        <td>
+                        
                             @if($property->agent_id == NULL)
-                            <code> Admin </code>
+                                <td><code> Admin </code></td>
                             @else
-                            <code> {{ $property['user']['name'] }} </code>
+                                <td><code> {{ $property['user']['name'] }} </code></td>
                             @endif
-                        </td> 
+                        
                     </tr>
 
                     
@@ -165,6 +165,28 @@
 
                 </tbody>
             </table>
+
+            <br><br>
+
+                    @if($property->status == 1)
+                            <form method="post" action="{{ route('inactive.property') }}" >
+                                @csrf
+                            <input type="hidden" name="id" value="{{ $property->id }}">
+                            <button type="submit" class="btn btn-primary">InActive </button>
+                        
+                        </form>
+                        
+                    @else
+                            <form method="post" action="{{ route('active.property') }}" >
+                                @csrf
+                            <input type="hidden" name="id" value="{{ $property->id }}">
+                        
+                            <button type="submit" class="btn btn-primary">Active </button>
+                        
+                        </form>
+          
+                   @endif 
+
         </div>
         </div>
     </div>
