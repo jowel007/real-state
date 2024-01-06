@@ -54,6 +54,7 @@ Route::middleware(['auth','role:agent'])->group(function (){
 }); //end group agent middleware
 
 Route::get('/agent/login', [AgentController::class, 'AgentLogin'])->name('agent.login')->middleware(RedirectIfAuthenticated::class);
+Route::post('/agent/register', [AgentController::class, 'AgentRegister'])->name('agent.register');
 
 Route::middleware(['auth','role:admin'])->group(function (){
 
