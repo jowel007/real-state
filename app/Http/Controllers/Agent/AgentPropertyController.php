@@ -129,4 +129,23 @@ class AgentPropertyController extends Controller
     }// End Method 
 
 
+
+    public function AgentEditProperty($id){
+
+        $facilities = Facility::where('property_id',$id)->get();
+        $property = Property::findOrFail($id);
+
+        $type = $property->amenities_id;
+        $property_ami = explode(',', $type);
+
+        $multiImage = MultiImg::where('property_id',$id)->get();
+
+        $propertytype = PropertyType::latest()->get();
+        $amenities = Amenities::latest()->get();
+
+        return view('agent.property.edit_property',compact('property','propertytype','amenities','property_ami','multiImage','facilities'));
+
+    }// End Method 
+
+
 }
