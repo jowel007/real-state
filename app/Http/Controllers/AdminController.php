@@ -116,5 +116,13 @@ class AdminController extends Controller
     }// End Method
 
 
+    public function AllAgent(){
+
+        $allagent = User::where('role','agent')->get();
+        return view('backend.agentuser.all_agent',compact('allagent'));
+    
+      }// End Method 
+
+
 
 }
