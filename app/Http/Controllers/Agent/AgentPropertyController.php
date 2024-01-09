@@ -383,4 +383,9 @@ class AgentPropertyController extends Controller
     }// End Method  
 
 
+    public function BuyPackage(){
+        return view('agent.package.buy_package');
+    }
+
+
 }
