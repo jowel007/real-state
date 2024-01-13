@@ -28,9 +28,18 @@ class AgentPropertyController extends Controller
         $propertytype = PropertyType::latest()->get();
         $amenities = Amenities::latest()->get();
 
-        return view('agent.property.add_property',compact('propertytype','amenities'));
 
-    }// End Method
+        $id = Auth::user()->id;
+        $property = User::where('role','agent')->where('id',$id)->first();
+        $pcount = $property->credit;
+
+        if ($pcount == 1) {
+            return redirect()->route('buy.package');
+         }else{
+        return view('agent.property.add_property',compact('propertytype','amenities'));
+    }
+
+}// End Method
 
 
     public function AgentStoreProperty(Request $request){
@@ -396,6 +405,13 @@ class AgentPropertyController extends Controller
     public function BuyPackage(){
         return view('agent.package.buy_package');
     }
+
+    public function BuyBusinessPlan(){
+
+        $id = Auth::user()->id;
+        return view('agent.package.business_plan',compact('id'));
+
+    }// End Method 
 
 
 }
