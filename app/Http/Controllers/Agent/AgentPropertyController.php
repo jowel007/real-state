@@ -10,6 +10,7 @@ use App\Models\Facility;
 use App\Models\Amenities;
 use App\Models\PropertyType;
 use App\Models\User;
+use App\Models\PackagePlan;
 use Intervention\Image\Facades\Image;
 use Haruncpi\LaravelIdGenerator\IdGenerator;
 use Carbon\Carbon;
@@ -33,7 +34,7 @@ class AgentPropertyController extends Controller
         $property = User::where('role','agent')->where('id',$id)->first();
         $pcount = $property->credit;
 
-        if ($pcount == 1) {
+        if ($pcount == 1 || $pcount == 7) {
             return redirect()->route('buy.package');
          }else{
         return view('agent.property.add_property',compact('propertytype','amenities'));
@@ -413,6 +414,37 @@ class AgentPropertyController extends Controller
         return view('agent.package.business_plan',compact('data'));
 
     }// End Method 
+
+    public function StoreBusinessPlan(Request $request){
+
+        $id = Auth::user()->id;
+        $uid = User::findOrFail($id);
+        $nid = $uid->credit;
+
+
+        PackagePlan::insert([
+
+            'user_id' => $id,
+            'package_name' => 'Business',
+            'package_credits' => '3',
+            'invoice' => 'ERS'.mt_rand(10000000,99999999),
+            'package_amount' => '20',
+            'created_at' => Carbon::now(), 
+          ]);
+
+          User::where('id',$id)->update([
+            'credit' => DB::raw('3 + '.$nid),
+        ]);
+
+
+          $notification = array(
+            'message' => 'You have purchase Basic Package Successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('agent.all.property')->with($notification);
+
+    }
 
 
 }
