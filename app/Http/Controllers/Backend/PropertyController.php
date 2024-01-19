@@ -437,4 +437,14 @@ class PropertyController extends Controller
     }
 
 
+    public function PackageInvoice($id){
+        $packagehistory = PackagePlan::where('id',$id)->first();
+        $pdf = Pdf::loadView('backend.package.package_history_invoice', compact('packagehistory'))->setPaper('a4')->setOption([
+            'tempDir' => public_path(),
+            'chroot' => public_path(),
+        ]);
+        return $pdf->download('invoice.pdf');
+    }
+
+
 }
