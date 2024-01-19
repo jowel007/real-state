@@ -14,6 +14,8 @@ use App\Models\user;
 // use App\Models\MultiImg;
 use Intervention\Image\Facades\Image;
 use Haruncpi\LaravelIdGenerator\IdGenerator;
+use App\Models\PackagePlan;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 
 class PropertyController extends Controller
@@ -427,6 +429,12 @@ class PropertyController extends Controller
 
 
     }// End Method
+
+
+    public function AdminPackageHistory(){
+        $packagehistory = PackagePlan::latest()->get();
+        return view('backend.package.package_history',compact('packagehistory'));
+    }
 
 
 }
