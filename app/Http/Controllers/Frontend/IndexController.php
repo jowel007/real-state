@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Property;
-use App\Models\MultiImage;
+use App\Models\MultiImg;
 use App\Models\Facility;
 use App\Models\Amenities;
 use App\Models\PropertyType; 
@@ -17,7 +17,9 @@ class IndexController extends Controller
     
     public function PropertyDetails($id,$slug){
 
-        return view('frontend.property.property_details');
+        $property = Property::findOrFail($id);
+        $multiImage = MultiImg::where('property_id',$id)->get();
+        return view('frontend.property.property_details',compact('property','multiImage'));
 
     }// End Method 
 
