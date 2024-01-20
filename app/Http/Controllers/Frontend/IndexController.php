@@ -19,7 +19,12 @@ class IndexController extends Controller
 
         $property = Property::findOrFail($id);
         $multiImage = MultiImg::where('property_id',$id)->get();
-        return view('frontend.property.property_details',compact('property','multiImage'));
+
+        $amenities = $property->amenities_id;
+        $property_amen = explode(',',$amenities);
+
+
+        return view('frontend.property.property_details',compact('property','multiImage','property_amen'));
 
     }// End Method 
 
