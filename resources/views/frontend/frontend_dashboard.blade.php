@@ -27,6 +27,8 @@
     <link href="{{ asset('frontend') }}/assets/css/style.css" rel="stylesheet">
     <link href="{{ asset('frontend') }}/assets/css/responsive.css" rel="stylesheet">
 
+    
+
     {{-- toster css --}}
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" >
 
@@ -89,6 +91,12 @@
 
 <!-- main-js -->
 <script src="{{ asset('frontend') }}/assets/js/script.js"></script>
+
+
+ <!-- map script -->
+ <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-CE0deH3Jhj6GN4YvdCFZS7DpbXexzGU"></script>
+ <script src="{{ asset('frontend/assets/js/gmaps.js') }}"></script>
+ <script src="{{ asset('frontend/assets/js/map-helper.js') }}"></script>
 
 
 {{-- toster script --}}
