@@ -42,10 +42,20 @@ Route::middleware('auth')->group(function () {
     Route::get('/user/change/password', [UserController::class, 'UserChangePassword'])->name('user.change.password');
     Route::post('/user/password/update', [UserController::class, 'UserPasswordUpdate'])->name('user.password.update');
 
-
     // Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     // Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+     // User WishlistAll Route 
+Route::controller(WishlistController::class)->group(function(){
+
+    Route::get('/user/wishlist', 'UserWishlist')->name('user.wishlist'); 
+
+
+    });
+
 });
+
+
 
 require __DIR__.'/auth.php';
 
