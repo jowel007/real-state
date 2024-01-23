@@ -141,7 +141,7 @@
 //add to wishlist
 
     function addToWishList(property_id){
-        $ajax({
+        $.ajax({
             type: "POST",
             dataType: 'json',
             url: "/add-to-wishList/"+property_id,
