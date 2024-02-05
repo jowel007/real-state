@@ -319,6 +319,77 @@ function addToCompare(property_id){
 </script>
 
 
+<!-- // start load Compare Data  -->
+
+<script type="text/javascript">
+    function compare(){
+        $.ajax({
+            type: "GET",
+            dataType: 'json',
+            url: "/get-compare-property/",
+            success:function(response){
+ 
+                var rows = ""
+                $.each(response, function(key,value){
+  rows += ` <tr>
+                <th>Property Info</th>
+                <th>
+                    <figure class="image-box"><img style='height:300px;width:465px;' src="/${value.property.property_thambnail}" alt=""></figure>
+                    <div class="title">${value.property.property_name}</div>
+                    <div class="price">$${value.property.lowest_price}</div>
+                </th>
+                
+               
+            </tr>    
+            <tr>
+                <td>
+                    <p>City</p>
+                </td>
+                <td>
+                    <p>${value.property.city}</p>
+                </td>
+                 
+            </tr>
+            <tr>
+                <td>
+                    <p>Area</p>
+                </td>
+                <td>
+                    <p>${value.property.property_size} Sq Ft</p>
+                </td>
+                 
+            </tr>
+            <tr>
+                <td>
+                    <p>Rooms</p>
+                </td>
+                <td>
+                    <p>${value.property.bedrooms}</p>
+                </td>
+                 
+            </tr>
+            <tr>
+                <td>
+                    <p>Bathrooms</p>
+                </td>
+                <td>
+                    <p>${value.property.bathrooms}</p>
+                </td>
+                 
+            </tr>
+           `  
+                });
+      $('#compare').html(rows);       
+            }
+        })
+    }
+    compare();
+
+ 
+    
+</script>
+
+
 
 </body><!-- End of .page_wrapper -->
 </html>
