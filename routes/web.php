@@ -13,6 +13,7 @@ use App\Http\Controllers\Agent\AgentPropertyController;
 use App\Http\Controllers\Frontend\IndexController;
 
 use App\Http\Controllers\Frontend\WishlistController;
+use App\Http\Controllers\Frontend\CompareController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -54,6 +55,8 @@ Route::controller(WishlistController::class)->group(function(){
     Route::get('/wishlist-remove/{id}', 'WishlistRemove');
     
 });
+
+
 
 });
 
@@ -220,4 +223,7 @@ Route::get('/property/details/{id}/{slug}', [IndexController::class, 'PropertyDe
 
 // Wishlist Add Route 
 Route::post('/add-to-wishList/{property_id}', [WishlistController::class, 'AddToWishList']);
+
+ // Compare Add Route 
+ Route::post('/add-to-compare/{property_id}', [CompareController::class, 'AddToCompare']);
 
