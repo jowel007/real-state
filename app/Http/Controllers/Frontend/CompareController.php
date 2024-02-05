@@ -31,6 +31,11 @@ class CompareController extends Controller
         }else{
             return response()->json(['error' => 'At First Login Your Account']);
         }
-        
+
+    }
+
+
+    public function UserCompare(){
+        return view('frontend.dashboard.compare');
     }
 }
