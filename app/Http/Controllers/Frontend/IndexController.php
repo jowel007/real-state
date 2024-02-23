@@ -36,4 +36,10 @@ class IndexController extends Controller
     }// End Method 
 
 
+    public function PropertyMessage(Request $request){
+        
+    }
+
+
+
 }
