@@ -131,4 +131,12 @@ class IndexController extends Controller
         return view('frontend.property.rent_property',compact('property'));
     }
 
+     public function BuyProperty(){
+
+        $property = Property::where('status','1')->where('property_status','buy')->get();
+
+        return view('frontend.property.buy_property',compact('property'));
+
+     }// End Method
+
 }
