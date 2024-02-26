@@ -251,3 +251,6 @@ Route::get('/rent/property', [IndexController::class, 'RentProperty'])->name('re
 
 // Get All Buy Property
 Route::get('/buy/property', [IndexController::class, 'BuyProperty'])->name('buy.property');
+
+// Get All Property Type Data in details page
+ Route::get('/property/type/{id}', [IndexController::class, 'PropertyType'])->name('property.type');
