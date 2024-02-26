@@ -46,17 +46,17 @@ Route::middleware('auth')->group(function () {
     // Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     // Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-     // User WishlistAll Route 
+     // User WishlistAll Route
 Route::controller(WishlistController::class)->group(function(){
 
-    Route::get('/user/wishlist', 'UserWishlist')->name('user.wishlist'); 
+    Route::get('/user/wishlist', 'UserWishlist')->name('user.wishlist');
     Route::get('/get-wishlist-property', 'GetWishlistProperty');
     // Route::get('/wishlist-remove/{id}', 'WishlistRemove');
     Route::get('/wishlist-remove/{id}', 'WishlistRemove');
-    
+
 });
 
- // User Compare All Route 
+ // User Compare All Route
  Route::controller(CompareController::class)->group(function(){
 
     Route::get('/user/compare', 'UserCompare')->name('user.compare');
@@ -131,8 +131,8 @@ Route::middleware(['auth','role:admin'])->group(function (){
         Route::post('/store/property', 'StoreProperty')->name('store.property');
         Route::get('/edit/property/{id}', 'EditProperty')->name('edit.property');
         Route::post('/update/property', 'UpdateProperty')->name('update.property');
-        
-        
+
+
         Route::post('/update/property/thambnail', 'UpdatePropertyThambnail')->name('update.property.thambnail');
         Route::post('/update/property/multiimage', 'UpdatePropertyMultiimage')->name('update.property.multiimage');
         Route::get('/property/multiimg/delete/{id}', 'PropertyMultiImageDelete')->name('property.multiimg.delete');
@@ -151,14 +151,14 @@ Route::middleware(['auth','role:admin'])->group(function (){
       Route::get('/admin/package/history', 'AdminPackageHistory')->name('admin.package.history');
       Route::get('/package/invoice/{id}', 'PackageInvoice')->name('package.invoice');
 
-        
+
     });
 
 
-     // Agent All Route from admin 
+     // Agent All Route from admin
     Route::controller(AdminController::class)->group(function(){
 
-    Route::get('/all/agent', 'AllAgent')->name('all.agent'); 
+    Route::get('/all/agent', 'AllAgent')->name('all.agent');
     Route::get('/add/agent', 'AddAgent')->name('add.agent');
     Route::post('/store/agent', 'StoreAgent')->name('store.agent');
     Route::get('/edit/agent/{id}', 'EditAgent')->name('edit.agent');
@@ -178,7 +178,7 @@ Route::middleware(['auth','role:admin'])->group(function (){
 
 Route::middleware(['auth','role:agent'])->group(function (){
 
-     // Agent All property Route  
+     // Agent All property Route
      Route::controller(AgentPropertyController::class)->group(function(){
 
         Route::get('/agent/all/property', 'AgentAllProperty')->name('agent.all.property');
@@ -196,21 +196,21 @@ Route::middleware(['auth','role:agent'])->group(function (){
 
         Route::post('/agent/update/property/facilities', 'AgentUpdatePropertyFacilities')->name('agent.update.property.facilities');
 
-        Route::get('/agent/details/property/{id}', 'AgentDetailsProperty')->name('agent.details.property'); 
+        Route::get('/agent/details/property/{id}', 'AgentDetailsProperty')->name('agent.details.property');
 
-        Route::get('/agent/delete/property/{id}', 'AgentDeleteProperty')->name('agent.delete.property'); 
+        Route::get('/agent/delete/property/{id}', 'AgentDeleteProperty')->name('agent.delete.property');
 
     });
 
 
-    
+
      // Agent Buy Package Route
      Route::controller(AgentPropertyController::class)->group(function(){
 
-        Route::get('/buy/package', 'BuyPackage')->name('buy.package'); 
+        Route::get('/buy/package', 'BuyPackage')->name('buy.package');
         Route::get('/buy/business/plan', 'BuyBusinessPlan')->name('buy.business.plan');
         Route::post('/store/business/plan', 'StoreBusinessPlan')->name('store.business.plan');
-        
+
 
         Route::get('/buy/professional/plan', 'BuyProfessionalPlan')->name('buy.professional.plan');
         Route::post('/store/professional/plan', 'StoreProfessionalPlan')->name('store.professional.plan');
@@ -218,8 +218,8 @@ Route::middleware(['auth','role:agent'])->group(function (){
 
         Route::get('/package/history','PackageHistory')->name('package.history');
         Route::get('/agent/package/invoice/{id}', 'AgentPackageInvoice')->name('agent.package.invoice');
-    
-    
+
+
     });
 
 
@@ -231,10 +231,10 @@ Route::middleware(['auth','role:agent'])->group(function (){
 // Frontend Property Details All Route
 Route::get('/property/details/{id}/{slug}', [IndexController::class, 'PropertyDetails']);
 
-// Wishlist Add Route 
+// Wishlist Add Route
 Route::post('/add-to-wishList/{property_id}', [WishlistController::class, 'AddToWishList']);
 
- // Compare Add Route 
+ // Compare Add Route
  Route::post('/add-to-compare/{property_id}', [CompareController::class, 'AddToCompare']);
 
 // property details page send message route
@@ -243,5 +243,8 @@ Route::post('/property/message', [IndexController::class, 'PropertyMessage'])->n
 // agent details page in frontend
 Route::get('/agent/details/{id}', [IndexController::class, 'AgentDetails'])->name('agent.details');
 
-// Send Message from Agent Details Page 
+// Send Message from Agent Details Page
 Route::post('/agent/details/message', [IndexController::class, 'AgentDetailsMessage'])->name('agent.details.message');
+
+// Get All Rent Property
+Route::get('/rent/property', [IndexController::class, 'RentProperty'])->name('rent.property');

@@ -21,7 +21,7 @@
 <!--End Page Title-->
         <!--End Page Title-->
 
-       
+
         <!-- agent-details -->
         <section class="agent-details">
             <div class="auto-container">
@@ -55,7 +55,7 @@
             </div>
         </section>
         <!-- agent-details end -->
-   
+
 
         <!-- agents-page-section -->
         <section class="agents-page-section agent-details-page">
@@ -67,14 +67,14 @@
                                 <h3>Listing By {{ $agent->name }}</h3>
                             </div>
                             <div class="item-shorting clearfix">
-                                
-                                
+
+
                             </div>
                             <div class="tabs-content">
                                 <div class="tab active-tab" id="tab-1">
                                     <div class="wrapper list">
                                         <div class="deals-list-content list-item">
-                                            
+
                                             @foreach ($property as $item)
                                             <div class="deals-block-one">
                                                 <div class="inner-box">
@@ -100,16 +100,16 @@
 
                                                         @if($item->agent_id == Null)
                                                             <div class="author-box pull-right">
-                                                                <figure class="author-thumb"> 
+                                                                <figure class="author-thumb">
                                                                     <img src="{{ url('upload/ariyan.jpg') }}" alt="">
                                                                     <span>Admin</span>
                                                                 </figure>
                                                             </div>
 
-                                                        @else 
+                                                        @else
 
                                                             <div class="author-box pull-right">
-                                                                 <figure class="author-thumb"> 
+                                                                 <figure class="author-thumb">
                                                                      <img src="{{ (!empty($item->user->photo)) ? url('upload/agent_images/'.$item->user->photo) : url('upload/no_image.jpg') }}" alt="">
                                                                      <span>{{ $item->user->name }}</span>
                                                                  </figure>
@@ -134,14 +134,14 @@
                                                 </div>
                                             </div>
                                             @endforeach
-                                            
+
                                         </div>
-                                        
+
 
                                     </div>
                                 </div>
-                               
-                              
+
+
                             </div>
                         </div>
                     </div>
@@ -161,10 +161,10 @@
                                             @endphp
 
                                         <form action="{{ route('agent.details.message') }}" method="post" class="default-form">
-                                            @csrf  
-                                    
+                                            @csrf
+
                                           <input type="hidden" name="agent_id" value="{{ $agent->id }}">
-                                    
+
                                                 <div class="form-group">
                                                     <input type="text" name="msg_name" placeholder="Your name" value="{{ $userData->name }}">
                                                 </div>
@@ -183,11 +183,11 @@
                                         </form>
                                     @else
                                         <form action="{{ route('agent.details.message') }}" method="post" class="default-form">
-                                            @csrf  
-                                    
+                                            @csrf
+
                                         <input type="hidden" name="agent_id" value="{{ $agent->id }}">
-                                    
-                                    
+
+
                                                 <div class="form-group">
                                                     <input type="text" name="msg_name" placeholder="Your name" required="">
                                                 </div>
@@ -206,7 +206,7 @@
                                             </form>
                                     @endauth
 
-                                   
+
 
 
                                 </div>
@@ -216,8 +216,8 @@
                                     <h5>Status Of Property</h5>
                                 </div>
                                 <ul class="category-list clearfix">
-                                    <li><a href="agency-details.html">For Rent <span>(200)</span></a></li>
-                                    <li><a href="agency-details.html">For Sale <span>(700)</span></a></li>
+                                    <li><a href="{{ route('rent.property') }}">For Rent <span>({{ count($rentproperty) }})</span></a></li>
+                                    <li><a href="agency-details.html">For Buy <span>({{ count($buyproperty) }})</span></a></li>
                                 </ul>
                             </div>
 
@@ -228,7 +228,7 @@
                                     <h5>Featured Properties</h5>
                                 </div>
                                 <div class="single-item-carousel owl-carousel owl-theme owl-nav-none dots-style-one">
-                                    
+
                                 @foreach ($featured as $item)
                                     <div class="feature-block-one">
                                         <div class="inner-box">
@@ -251,7 +251,7 @@
                                         </div>
                                     </div>
                                 @endforeach
-                                    
+
 
                                 </div>
                             </div>

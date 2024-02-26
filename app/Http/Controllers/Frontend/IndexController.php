@@ -8,16 +8,16 @@ use App\Models\Property;
 use App\Models\MultiImg;
 use App\Models\Facility;
 use App\Models\Amenities;
-use App\Models\PropertyType; 
-use App\Models\User; 
+use App\Models\PropertyType;
+use App\Models\User;
 use App\Models\PropertyMessage;
-use App\Models\PackagePlan; 
+use App\Models\PackagePlan;
 use Auth;
 use Carbon\Carbon;
 
 class IndexController extends Controller
 {
-    
+
     public function PropertyDetails($id,$slug){
 
         $property = Property::findOrFail($id);
@@ -36,7 +36,7 @@ class IndexController extends Controller
 
         return view('frontend.property.property_details',compact('property','multiImage','property_amen','facility','relatedProperty'));
 
-    }// End Method 
+    }// End Method
 
 
     public function PropertyMessage(Request $request){
@@ -59,16 +59,16 @@ class IndexController extends Controller
                 'message' => 'Send Message Successfully',
                 'alert-type' => 'success'
             );
-    
-            return redirect()->back()->with($notification); 
+
+            return redirect()->back()->with($notification);
 
         }else {
             $notification = array(
                 'message' => 'Please Login Your Account First',
                 'alert-type' => 'error'
             );
-    
-            return redirect()->back()->with($notification); 
+
+            return redirect()->back()->with($notification);
         }
     }
 
@@ -78,7 +78,11 @@ class IndexController extends Controller
         $property = Property::where('agent_id',$id)->get();
         $featured = Property::where('featured','1')->limit(3)->get();
 
-        return view('frontend.agent.agent_details',compact('agent','property','featured'));
+        $rentproperty = Property::where('property_status','rent')->get();
+
+        $buyproperty = Property::where('property_status','buy')->get();
+
+        return view('frontend.agent.agent_details',compact('agent','property','featured','rentproperty','buyproperty'));
     }
 
 
@@ -91,12 +95,12 @@ class IndexController extends Controller
         PropertyMessage::insert([
 
             'user_id' => Auth::user()->id,
-            'agent_id' => $aid, 
+            'agent_id' => $aid,
             'msg_name' => $request->msg_name,
             'msg_email' => $request->msg_email,
             'msg_phone' => $request->msg_phone,
             'message' => $request->message,
-            'created_at' => Carbon::now(), 
+            'created_at' => Carbon::now(),
 
         ]);
 
@@ -119,6 +123,12 @@ class IndexController extends Controller
         return redirect()->back()->with($notification);
         }
 
-    }// End Method 
+    }// End Method
+
+
+    public function RentProperty(){
+        $property = Property::where('status','1')->where('property_status','rent')->get();
+        return view('frontend.property.rent_property',compact('property'));
+    }
 
 }
