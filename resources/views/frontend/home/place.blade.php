@@ -1,3 +1,18 @@
+@php
+    $skip_place_0 = App\Models\Place::skip(0)->first();
+    $property_0 = App\Models\Property::where('state')->get();
+
+    $skip_place_1 = App\Models\Place::skip(1)->first();
+    $property_1 = App\Models\Property::where('state')->get();
+
+    $skip_place_2 = App\Models\Place::skip(2)->first();
+    $property_2 = App\Models\Property::where('state')->get();
+
+    $skip_place_3 = App\Models\Place::skip(3)->first();
+    $property_3 = App\Models\Property::where('state')->get();
+@endphp
+
+
 <section class="place-section sec-pad">
     <div class="auto-container">
         <div class="sec-title centred">
@@ -10,10 +25,10 @@
                 <div class="col-lg-4 col-md-6 col-sm-12 masonry-item small-column all illustration brand marketing software">
                     <div class="place-block-one">
                         <div class="inner-box">
-                            <figure class="image-box"><img src="{{ asset('frontend') }}/assets/images/resource/place-1.jpg" alt=""></figure>
+                            <figure class="image-box"><img src="{{ asset($skip_place_0->place_image) }}" style="width:370px; height:580px;" alt=""></figure>
                             <div class="text">
-                                <h4><a href="categories.html">Los Angeles</a></h4>
-                                <p>10 Properties</p>
+                                <h4><a href="categories.html">{{ $skip_place_0->place_name }}</a></h4>
+                                <p>{{ count($property_0) }} Properties</p>
                             </div>
                         </div>
                     </div>
@@ -21,10 +36,10 @@
                 <div class="col-lg-4 col-md-6 col-sm-12 masonry-item small-column all brand illustration print software logo">
                     <div class="place-block-one">
                         <div class="inner-box">
-                            <figure class="image-box"><img src="{{ asset('frontend') }}/assets/images/resource/place-2.jpg" alt=""></figure>
+                            <figure class="image-box"><img src="{{ asset($skip_place_1->place_image) }}" style="width:370px; height:275px; alt=""></figure>
                             <div class="text">
-                                <h4><a href="categories.html">San Francisco</a></h4>
-                                <p>08 Properties</p>
+                                <h4><a href="categories.html">{{ $skip_place_1->place_name }}</a></h4>
+                                <p>{{ count($property_1) }} Properties</p>
                             </div>
                         </div>
                     </div>
@@ -32,10 +47,10 @@
                 <div class="col-lg-4 col-md-6 col-sm-12 masonry-item small-column all illustration marketing logo">
                     <div class="place-block-one">
                         <div class="inner-box">
-                            <figure class="image-box"><img src="{{ asset('frontend') }}/assets/images/resource/place-3.jpg" alt=""></figure>
+                            <figure class="image-box"><img src="{{ asset($skip_place_2->place_image) }}" style="width:370px; height:275px; alt=""></figure>
                             <div class="text">
-                                <h4><a href="categories.html">Las Vegas</a></h4>
-                                <p>29 Properties</p>
+                                <h4><a href="categories.html">{{ $skip_place_2->place_name }}</a></h4>
+                                <p>{{ count($property_2) }} Properties</p>
                             </div>
                         </div>
                     </div>
@@ -43,10 +58,10 @@
                 <div class="col-lg-8 col-md-6 col-sm-12 masonry-item small-column all brand marketing print software">
                     <div class="place-block-one">
                         <div class="inner-box">
-                            <figure class="image-box"><img src="{{ asset('frontend') }}/assets/images/resource/place-4.jpg" alt=""></figure>
+                            <figure class="image-box"><img src="{{ asset($skip_place_3->place_image) }}" style="width:770px; height:275px; alt=""></figure>
                             <div class="text">
-                                <h4><a href="categories.html">New York City</a></h4>
-                                <p>05 Properties</p>
+                                <h4><a href="categories.html">{{ $skip_place_3->place_name }}</a></h4>
+                                <p>{{ count($property_3) }} Properties</p>
                             </div>
                         </div>
                     </div>

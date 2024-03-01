@@ -32,7 +32,7 @@
                         </li>
                         <li class="nav-item">
                             <a href="pages/email/read.html" class="nav-link">Add Property</a>
-                        </li>   
+                        </li>
                     </ul>
                 </div>
             </li>
@@ -49,7 +49,7 @@
                         </li>
                         <li class="nav-item">
                             <a href="pages/email/read.html" class="nav-link">Add Amenities</a>
-                        </li>   
+                        </li>
                     </ul>
                 </div>
             </li>
@@ -67,7 +67,26 @@
                         </li>
                         <li class="nav-item">
                             <a href="{{ route('add.property') }}" class="nav-link">Add Property</a>
-                        </li>   
+                        </li>
+                    </ul>
+                </div>
+            </li>
+
+
+            <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="collapse" href="#place" role="button" aria-expanded="false" aria-controls="emails">
+                    <i class="link-icon" data-feather="mail"></i>
+                    <span class="link-title">PLACES</span>
+                    <i class="link-arrow" data-feather="chevron-down"></i>
+                </a>
+                <div class="collapse" id="place">
+                    <ul class="nav sub-menu">
+                        <li class="nav-item">
+                            <a href="{{ route('all.place') }}" class="nav-link">All Place</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('add.place') }}" class="nav-link">Add Place</a>
+                        </li>
                     </ul>
                 </div>
             </li>
