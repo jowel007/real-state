@@ -125,7 +125,7 @@ class IndexController extends Controller
 
 
     public function RentProperty(){
-        $property = Property::where('status','1')->where('property_status','rent')->paginate(1);
+        $property = Property::where('status','1')->where('property_status','rent')->paginate(3);
         return view('frontend.property.rent_property',compact('property'));
     }
 
