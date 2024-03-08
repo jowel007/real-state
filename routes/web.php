@@ -266,3 +266,9 @@ Route::get('/buy/property', [IndexController::class, 'BuyProperty'])->name('buy.
 
 // Get All Property Type Data in details page
  Route::get('/property/type/{id}', [IndexController::class, 'PropertyType'])->name('property.type');
+
+//home page banner section buy serach All Property
+Route::post('/buy/search/property', [IndexController::class, 'BuySearchProperty'])->name('buy.search.property');
+
+// Home Page Rent Seach Option
+Route::post('/rent/property/search', [IndexController::class, 'RentPropertySeach'])->name('rent.property.search');

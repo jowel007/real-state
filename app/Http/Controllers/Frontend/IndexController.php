@@ -146,4 +146,46 @@ class IndexController extends Controller
         return view('frontend.property.property_type',compact('property','ptype'));
      }
 
+
+     public function BuySearchProperty(Request $request){
+        $request->validate(['search' => 'required']);
+         $item = $request->search;
+         $searchplace = $request->place;
+         $searchPtype = $request->ptype_id;
+
+         $property = Property::where('property_name', 'like' , '%' .$item. '%')->where('property_status','buy')->with('type','place')
+             ->whereHas('place', function($q) use ($searchplace){
+                 $q->where('state_name','like' , '%' .$searchplace. '%');
+             })
+             ->whereHas('type', function($q) use ($searchPtype){
+                 $q->where('type_name','like' , '%' .$searchPtype. '%');
+             })
+             ->get();
+
+         return view('frontend.property.property_search',compact('property'));
+     }
+
+
+    public function RentPropertySeach(Request $request){
+
+        $request->validate(['search' => 'required']);
+        $item = $request->search;
+        $searchplace = $request->place;
+        $searchPtype = $request->ptype_id;
+
+        $property = Property::where('property_name', 'like' , '%' .$item. '%')->where('property_status','rent')->with('type','place')
+            ->whereHas('place', function($q) use ($searchplace){
+                $q->where('state_name','like' , '%' .$searchplace. '%');
+            })
+            ->whereHas('type', function($q) use ($searchPtype){
+                $q->where('type_name','like' , '%' .$searchPtype. '%');
+            })
+            ->get();
+
+        return view('frontend.property.property_search',compact('property'));
+
+    }// End Method
+
+
+
 }
