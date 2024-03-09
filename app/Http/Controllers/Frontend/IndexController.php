@@ -188,4 +188,28 @@ class IndexController extends Controller
 
 
 
+    public function AllPropertySeach(Request $request){
+
+        $property_status = $request->property_status;
+        $stype = $request->ptype_id;
+        $splace= $request->state;
+        $bedrooms = $request->bedrooms;
+        $bathrooms = $request->bathrooms;
+
+        $property = Property::where('status','1')->where('bedrooms',$bedrooms)->where('bathrooms', 'like' , '%' .$bathrooms. '%')->where('property_status',$property_status)
+            ->with('type','place')
+            ->whereHas('place', function($q) use ($splace){
+                $q->where('place_name','like' , '%' .$splace. '%');
+            })
+            ->whereHas('type', function($q) use ($stype){
+                $q->where('type_name','like' , '%' .$stype. '%');
+            })
+            ->get();
+
+        return view('frontend.property.property_search',compact('property'));
+
+    }// End Method
+
+
+
 }
