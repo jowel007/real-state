@@ -8,6 +8,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\Backend\PropertyTypeController;
 use App\Http\Controllers\Backend\PropertyController;
 use App\Http\Controllers\Backend\PlaceController;
+use App\Http\Controllers\Backend\TestimonialController;
 use App\Http\Middleware\RedirectIfAuthenticated;
 
 use App\Http\Controllers\Agent\AgentPropertyController;
@@ -159,6 +160,18 @@ Route::middleware(['auth','role:admin'])->group(function (){
     Route::controller(PlaceController::class)->group(function(){
 
         Route::get('/all/place', 'AllPlace')->name('all.place');
+        Route::get('/add/place', 'AddPlace')->name('add.place');
+        Route::post('/store/place', 'StorePlace')->name('store.place');
+        Route::get('/edit/place/{id}', 'EditPlace')->name('edit.place');
+        Route::post('/update/place', 'UpdatePlace')->name('update.place');
+        Route::get('/delete/place/{id}', 'DeletePlace')->name('delete.place');
+    });
+
+
+    //Testimonial all route
+    Route::controller(TestimonialController::class)->group(function(){
+
+        Route::get('/all/testimonials', 'AllTestimonials')->name('all.testimonials');
         Route::get('/add/place', 'AddPlace')->name('add.place');
         Route::post('/store/place', 'StorePlace')->name('store.place');
         Route::get('/edit/place/{id}', 'EditPlace')->name('edit.place');
