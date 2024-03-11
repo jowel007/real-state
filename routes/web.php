@@ -172,11 +172,11 @@ Route::middleware(['auth','role:admin'])->group(function (){
     Route::controller(TestimonialController::class)->group(function(){
 
         Route::get('/all/testimonials', 'AllTestimonials')->name('all.testimonials');
-        Route::get('/add/place', 'AddPlace')->name('add.place');
-        Route::post('/store/place', 'StorePlace')->name('store.place');
-        Route::get('/edit/place/{id}', 'EditPlace')->name('edit.place');
-        Route::post('/update/place', 'UpdatePlace')->name('update.place');
-        Route::get('/delete/place/{id}', 'DeletePlace')->name('delete.place');
+        Route::get('/add/testimonials', 'AddTestimonials')->name('add.testimonials');
+        Route::post('/store/testimonials', 'StoreTestimonials')->name('store.testimonials');
+        Route::get('/edit/testimonials/{id}', 'EditTestimonials')->name('edit.testimonials');
+        Route::post('/update/testimonials', 'UpdateTestimonials')->name('update.testimonials');
+        Route::get('/delete/testimonials/{id}', 'DeleteTestimonials')->name('delete.testimonials');
     });
 
 

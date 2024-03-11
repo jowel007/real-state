@@ -6,7 +6,7 @@
 
         <nav class="page-breadcrumb">
             <ol class="breadcrumb">
-                <a href="{{ route('add.place') }}" class="btn btn-inverse-info"> Add Testimonials</a>
+                <a href="{{ route('add.testimonials') }}" class="btn btn-inverse-info"> Add Testimonials</a>
             </ol>
         </nav>
 
@@ -35,8 +35,8 @@
                                         <td>{{ $item->position }}</td>
                                         <td><img src="{{ asset($item->image) }}" style="width:70px;height: 40px;"> </td>
                                         <td>
-                                            <a href="{{ route('edit.state',$item->id) }}" class="btn btn-inverse-warning"> Edit </a>
-                                            <a href="{{ route('delete.state',$item->id) }}" class="btn btn-inverse-danger" id="delete"> Delete  </a>
+                                            <a href="{{ route('edit.testimonials',$item->id) }}" class="btn btn-inverse-warning"> Edit </a>
+                                            <a href="{{ route('delete.testimonials',$item->id) }}" class="btn btn-inverse-danger" id="delete"> Delete  </a>
                                         </td>
                                     </tr>
                                 @endforeach
