@@ -6,7 +6,9 @@
 
 				<nav class="page-breadcrumb">
 					<ol class="breadcrumb">
-	  <a href="{{ route('add.place') }}" class="btn btn-inverse-info"> Add Category    </a>
+                        <button type="button" class="btn btn-inverse-info" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            Add Category
+                          </button>
 					</ol>
 				</nav>
 
@@ -33,8 +35,8 @@
                         <td>{{ $item->category_name }}</td>
                         <td>{{ $item->category_slug }}</td>
                         <td>
-       <a href="{{ route('edit.state',$item->id) }}" class="btn btn-inverse-warning"> Edit </a>
-       <a href="{{ route('delete.state',$item->id) }}" class="btn btn-inverse-danger" id="delete"> Delete  </a>
+       <a href="{{ route('edit.place',$item->id) }}" class="btn btn-inverse-warning"> Edit </a>
+       <a href="{{ route('delete.place',$item->id) }}" class="btn btn-inverse-danger" id="delete"> Delete  </a>
                         </td> 
                       </tr>
                      @endforeach
@@ -47,6 +49,38 @@
 				</div>
 
 			</div>
+
+
+            <!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Add Category</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="btn-close"></button>
+        </div>
+        <div class="modal-body">
+  
+          <form method="POST" action="{{ route('store.blog.category') }}" class="forms-sample">
+          @csrf
+  
+  
+        <div class="form-group mb-3">
+            <label for="exampleInputEmail1" class="form-label">Blog Category Name </label>
+            <input type="text" name="category_name" class="form-control" >
+        </div> 
+  
+  
+        </div> 
+        <div class="modal-footer">
+  
+      <button type="submit" class="btn btn-primary">Save changes</button>
+        </div>
+     </form>
+  
+      </div>
+    </div>
+  </div>
 
 
 
