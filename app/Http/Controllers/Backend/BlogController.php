@@ -26,4 +26,15 @@ class BlogController extends Controller
 
         return redirect()->route('all.blog.category')->with($notification);
     }
+
+
+    public function EditBlogCategory($id){
+
+        $categories = BlogCategory::findOrFail($id);
+        return response()->json($categories);
+
+    }// End Method 
+
+
+    
 }
