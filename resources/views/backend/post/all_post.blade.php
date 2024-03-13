@@ -30,8 +30,8 @@
                            <td>{{ $item['cat']['category_name'] }}</td>
                            <td><img src="{{ asset($item->post_image) }}" style="width:70px;height: 40px;"> </td>
                            <td>
-                              <a href="{{ route('edit.place',$item->id) }}" class="btn btn-inverse-warning"> Edit </a>
-                              <a href="{{ route('delete.place',$item->id) }}" class="btn btn-inverse-danger" id="delete"> Delete  </a>
+                              <a href="{{ route('edit.post',$item->id) }}" class="btn btn-inverse-warning"> Edit </a>
+                              <a href="{{ route('delete.post',$item->id) }}" class="btn btn-inverse-danger" id="delete"> Delete  </a>
                            </td>
                         </tr>
                         @endforeach
