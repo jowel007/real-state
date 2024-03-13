@@ -155,10 +155,25 @@
                         <li class="nav-item">
                             <a href="{{ route('all.blog.category') }}" class="nav-link">Blog Category</a>
                         </li>
+                    </ul>
+                </div>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="collapse" href="#post" role="button" aria-expanded="false" aria-controls="uiComponents">
+                    <i class="link-icon" data-feather="feather"></i>
+                    <span class="link-title">Post</span>
+                    <i class="link-arrow" data-feather="chevron-down"></i>
+                </a>
+                <div class="collapse" id="post">
+                    <ul class="nav sub-menu">
                         <li class="nav-item">
-                            <a href="pages/ui-components/alerts.html" class="nav-link">Add Agent</a>
+                            <a href="{{ route('all.post') }}" class="nav-link">All Blog Post</a>
                         </li>
 
+                        <li class="nav-item">
+                            <a href="{{ route('add.post') }}" class="nav-link">Add Post</a>
+                        </li>
                     </ul>
                 </div>
             </li>
