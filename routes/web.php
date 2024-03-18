@@ -314,3 +314,4 @@ Route::post('/all/property/search', [IndexController::class, 'AllPropertySeach']
 
  // Blog Details Route 
  Route::get('/blog/details/{slug}', [BlogController::class, 'BlogDetails']);
+ Route::get('/blog/cat/list/{id}', [BlogController::class, 'BlogCatList']);
