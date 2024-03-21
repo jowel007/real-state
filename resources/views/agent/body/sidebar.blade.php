@@ -27,7 +27,7 @@ $status = $agentId->status;
             </li>
             @if($status === 'active')
             <li class="nav-item nav-category">Realshed</li>
-            
+
 
             <li class="nav-item">
                 <a class="nav-link" data-bs-toggle="collapse" href="#property" role="button" aria-expanded="false" aria-controls="emails">
@@ -40,7 +40,7 @@ $status = $agentId->status;
                         <li class="nav-item">
                             <a href="{{ route('agent.all.property') }}" class="nav-link">All Property</a>
                         </li>
-                          
+
                     </ul>
                 </div>
             </li>
@@ -58,6 +58,21 @@ $status = $agentId->status;
                   <span class="link-title">Package History </span>
                 </a>
               </li>
+
+                <li class="nav-item">
+                    <a href="{{ route('agent.property.message') }}" class="nav-link">
+                        <i class="link-icon" data-feather="calendar"></i>
+                        <span class="link-title">Property Message </span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="{{ route('agent.schedule.request') }}" class="nav-link">
+                        <i class="link-icon" data-feather="calendar"></i>
+                        <span class="link-title">Schedule Request </span>
+                    </a>
+                </li>
+
             <li class="nav-item">
                 <a href="pages/apps/calendar.html" class="nav-link">
                     <i class="link-icon" data-feather="calendar"></i>

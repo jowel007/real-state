@@ -248,7 +248,14 @@ Route::middleware(['auth','role:agent'])->group(function (){
 
         Route::get('/agent/delete/property/{id}', 'AgentDeleteProperty')->name('agent.delete.property');
 
-    });
+         Route::get('/agent/property/message/', 'AgentPropertyMessage')->name('agent.property.message');
+
+         Route::get('/agent/message/details/{id}', 'AgentMessageDetails')->name('agent.message.details');
+
+         // Schedule Request Route
+         Route::get('/agent/schedule/request/', 'AgentScheduleRequest')->name('agent.schedule.request');
+
+     });
 
 
 

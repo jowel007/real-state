@@ -17,6 +17,8 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use DB;
 use Barryvdh\DomPDF\Facade\Pdf;
+use App\Models\PropertyMessage;
+use App\Models\Schedule;
 
 class AgentPropertyController extends Controller
 {
@@ -96,7 +98,7 @@ class AgentPropertyController extends Controller
             'agent_id' => Auth::user()->id,
             'status' => 1,
             'property_thambnail' => $save_url,
-            'created_at' => Carbon::now(), 
+            'created_at' => Carbon::now(),
         ]);
 
         /// Multiple Image Upload From Here ////
@@ -112,9 +114,9 @@ class AgentPropertyController extends Controller
 
             'property_id' => $property_id,
             'photo_name' => $uploadPath,
-            'created_at' => Carbon::now(), 
+            'created_at' => Carbon::now(),
 
-        ]); 
+        ]);
         } // End Foreach
 
          /// End Multiple Image Upload From Here ////
@@ -124,7 +126,7 @@ class AgentPropertyController extends Controller
         $facilities = Count($request->facility_name);
 
         if ($facilities != NULL) {
-           for ($i=0; $i < $facilities; $i++) { 
+           for ($i=0; $i < $facilities; $i++) {
                $fcount = new Facility();
                $fcount->property_id = $property_id;
                $fcount->facility_name = $request->facility_name[$i];
@@ -148,7 +150,7 @@ class AgentPropertyController extends Controller
 
         return redirect()->route('agent.all.property')->with($notification);
 
-    }// End Method 
+    }// End Method
 
 
 
@@ -167,7 +169,7 @@ class AgentPropertyController extends Controller
 
         return view('agent.property.edit_property',compact('property','propertytype','amenities','property_ami','multiImage','facilities'));
 
-    }// End Method 
+    }// End Method
 
 
     public function AgentUpdateProperty(Request $request){
@@ -182,7 +184,7 @@ class AgentPropertyController extends Controller
             'ptype_id' => $request->ptype_id,
             'amenities_id' => $amenites,
             'property_name' => $request->property_name,
-            'property_slug' => strtolower(str_replace(' ', '-', $request->property_name)), 
+            'property_slug' => strtolower(str_replace(' ', '-', $request->property_name)),
             'property_status' => $request->property_status,
 
             'lowest_price' => $request->lowest_price,
@@ -206,8 +208,8 @@ class AgentPropertyController extends Controller
             'longitude' => $request->longitude,
             'featured' => $request->featured,
             'hot' => $request->hot,
-            'agent_id' => Auth::user()->id, 
-            'updated_at' => Carbon::now(), 
+            'agent_id' => Auth::user()->id,
+            'updated_at' => Carbon::now(),
 
         ]);
 
@@ -216,9 +218,9 @@ class AgentPropertyController extends Controller
             'alert-type' => 'success'
         );
 
-        return redirect()->route('agent.all.property')->with($notification); 
+        return redirect()->route('agent.all.property')->with($notification);
 
-    }// End Method 
+    }// End Method
 
 
     public function AgentUpdatePropertyThambnail(Request $request){
@@ -238,7 +240,7 @@ class AgentPropertyController extends Controller
         Property::findOrFail($pro_id)->update([
 
             'property_thambnail' => $save_url,
-            'updated_at' => Carbon::now(), 
+            'updated_at' => Carbon::now(),
         ]);
 
          $notification = array(
@@ -246,9 +248,9 @@ class AgentPropertyController extends Controller
             'alert-type' => 'success'
         );
 
-        return redirect()->back()->with($notification); 
+        return redirect()->back()->with($notification);
 
-    }// End Method 
+    }// End Method
 
 
     public function AgentUpdatePropertyMultiimage(Request $request){
@@ -270,7 +272,7 @@ class AgentPropertyController extends Controller
 
         ]);
 
-        } // End Foreach 
+        } // End Foreach
 
 
          $notification = array(
@@ -278,10 +280,10 @@ class AgentPropertyController extends Controller
             'alert-type' => 'success'
         );
 
-        return redirect()->back()->with($notification); 
+        return redirect()->back()->with($notification);
 
 
-    }// End Method 
+    }// End Method
 
 
     public function AgentPropertyMultiimgDelete($id){
@@ -296,9 +298,9 @@ class AgentPropertyController extends Controller
             'alert-type' => 'success'
         );
 
-        return redirect()->back()->with($notification); 
+        return redirect()->back()->with($notification);
 
-    }// End Method 
+    }// End Method
 
 
     public function AgentStoreNewMultiimage(Request $request){
@@ -313,7 +315,7 @@ class AgentPropertyController extends Controller
         MultiImg::insert([
             'property_id' => $new_multi,
             'photo_name' => $uploadPath,
-            'created_at' => Carbon::now(), 
+            'created_at' => Carbon::now(),
         ]);
 
     $notification = array(
@@ -321,8 +323,8 @@ class AgentPropertyController extends Controller
             'alert-type' => 'success'
         );
 
-        return redirect()->back()->with($notification); 
-    }// End Method 
+        return redirect()->back()->with($notification);
+    }// End Method
 
 
     public function AgentUpdatePropertyFacilities(Request $request){
@@ -334,15 +336,15 @@ class AgentPropertyController extends Controller
         }else{
             Facility::where('property_id',$pid)->delete();
 
-          $facilities = Count($request->facility_name); 
+          $facilities = Count($request->facility_name);
 
-           for ($i=0; $i < $facilities; $i++) { 
+           for ($i=0; $i < $facilities; $i++) {
                $fcount = new Facility();
                $fcount->property_id = $pid;
                $fcount->facility_name = $request->facility_name[$i];
                $fcount->distance = $request->distance[$i];
                $fcount->save();
-           } // end for 
+           } // end for
         }
 
          $notification = array(
@@ -350,9 +352,9 @@ class AgentPropertyController extends Controller
             'alert-type' => 'success'
         );
 
-        return redirect()->back()->with($notification); 
+        return redirect()->back()->with($notification);
 
-    }// End Method 
+    }// End Method
 
 
     public function AgentDetailsProperty($id){
@@ -371,7 +373,7 @@ class AgentPropertyController extends Controller
 
         return view('agent.property.details_property',compact('property','propertytype','amenities','property_ami','multiImage','facilities'));
 
-    }// End Method 
+    }// End Method
 
 
     public function AgentDeleteProperty($id){
@@ -400,9 +402,9 @@ class AgentPropertyController extends Controller
             'alert-type' => 'success'
         );
 
-        return redirect()->back()->with($notification); 
+        return redirect()->back()->with($notification);
 
-    }// End Method  
+    }// End Method
 
 
     public function BuyPackage(){
@@ -415,7 +417,7 @@ class AgentPropertyController extends Controller
         $data = User::find($id);
         return view('agent.package.business_plan',compact('data'));
 
-    }// End Method 
+    }// End Method
 
     public function StoreBusinessPlan(Request $request){
 
@@ -431,7 +433,7 @@ class AgentPropertyController extends Controller
             'package_credits' => '3',
             'invoice' => 'ERS'.mt_rand(10000000,99999999),
             'package_amount' => '20',
-            'created_at' => Carbon::now(), 
+            'created_at' => Carbon::now(),
           ]);
 
           User::where('id',$id)->update([
@@ -457,7 +459,7 @@ class AgentPropertyController extends Controller
     }
 
     public function StoreProfessionalPlan(Request $request){
-       
+
         $id = Auth::user()->id;
         $uid = User::findOrFail($id);
         $nid = $uid->credit;
@@ -469,14 +471,14 @@ class AgentPropertyController extends Controller
             'package_credits' => '10',
             'invoice' => 'ERS'.mt_rand(10000000,99999999),
             'package_amount' => '50',
-            'created_at' => Carbon::now(), 
+            'created_at' => Carbon::now(),
           ]);
-    
+
             User::where('id',$id)->update([
                 'credit' => DB::raw('10 + '.$nid),
             ]);
 
-        
+
         $notification = array(
             'message' => 'You have purchase Professional Package Successfully',
             'alert-type' => 'success'
@@ -507,6 +509,28 @@ class AgentPropertyController extends Controller
         return $pdf->download('invoice.pdf');
 
     }
+
+    public function AgentPropertyMessage(){
+        $id = Auth::user()->id;
+        $usermsg = PropertyMessage::where('agent_id',$id)->get();
+        return view('agent.message.all_message',compact('usermsg'));
+    }
+
+    public function AgentMessageDetails($id){
+        $uid = Auth::user()->id;
+        $usermsg = PropertyMessage::where('agent_id',$uid)->get();
+        $msgdetails = PropertyMessage::findOrFail($id);
+        return view('agent.message.message_details',compact('usermsg','msgdetails'));
+    }// End Method
+
+
+    public function AgentScheduleRequest(){
+
+        $id = Auth::user()->id;
+        $usermsg = Schedule::where('agent_id',$id)->get();
+        return view('agent.schedule.schedule_request',compact('usermsg'));
+
+    }// End Method
 
 
 }
