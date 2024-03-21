@@ -38,7 +38,7 @@
             <figure class="author-thumb"><img src="{{ (!empty($property->user->photo)) ? url('upload/agent_images/'.$property->user->photo) : url('upload/no_image.jpg') }}" alt=""></figure>
                         <h6>{{ $property->user->name }}</h6>
 
-          @endif         
+          @endif
 
 
 
@@ -86,7 +86,7 @@
                         </div>
                         <div class="text">
                             <p>{!! $property->long_descp !!}</p>
-                            
+
                         </div>
                     </div>
                     <div class="details-box content-widget">
@@ -175,14 +175,14 @@
                             <li><span>City:</span> {{ $property->city }}</li>
                         </ul>
                         <div class="google-map-area">
-                            <div 
-                                class="google-map" 
-                                id="contact-google-map" 
-                                data-map-lat="{{ $property->latitude }}" 
-                                data-map-lng="{{ $property->longitude }}" 
-                                data-icon-path="{{ asset('frontend/assets/images/icons/map-marker.png') }}"  
-                                data-map-title="Brooklyn, New York, United Kingdom" 
-                                data-map-zoom="12" 
+                            <div
+                                class="google-map"
+                                id="contact-google-map"
+                                data-map-lat="{{ $property->latitude }}"
+                                data-map-lng="{{ $property->longitude }}"
+                                data-icon-path="{{ asset('frontend/assets/images/icons/map-marker.png') }}"
+                                data-map-title="Brooklyn, New York, United Kingdom"
+                                data-map-zoom="12"
                                 data-markers='{
                                     "marker-1": [40.712776, -74.005974, "<h4>Branch Office</h4><p>77/99 New York</p>","{{ asset('frontend/assets/images/icons/map-marker.png') }}"]
                                 }'>
@@ -215,7 +215,7 @@
                                     @endforeach
                                 </div>
                             </div>
-                            
+
                         </div>
                     </div>
                     <div class="statistics-box content-widget">
@@ -226,40 +226,37 @@
                             <iframe width="700" height="415" src="{{ $property->property_video }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                         </figure>
                     </div>
+
+
                     <div class="schedule-box content-widget">
                         <div class="title-box">
                             <h4>Schedule A Tour</h4>
                         </div>
                         <div class="form-inner">
-                            <form action="property-details.html" method="post">
+                            <form action="{{ route('store.schedule') }}" method="post">
+                                @csrf
                                 <div class="row clearfix">
+
+                                    <input type="hidden" name="property_id" value="{{ $property->id }}">
+                                    @if($property->agent_id == Null)
+                                        <input type="hidden" name="agent_id" value="">
+                                    @else
+                                        <input type="hidden" name="agent_id" value="{{ $property->agent_id }}">
+                                    @endif
+
                                     <div class="col-lg-6 col-md-12 col-sm-12 column">
                                         <div class="form-group">
                                             <i class="far fa-calendar-alt"></i>
-                                            <input type="text" name="date" placeholder="Tour Date" id="datepicker">
+                                            <input type="text" name="tour_date" placeholder="Tour Date" id="datepicker">
                                         </div>
                                     </div>
                                     <div class="col-lg-6 col-md-12 col-sm-12 column">
                                         <div class="form-group">
                                             <i class="far fa-clock"></i>
-                                            <input type="text" name="time" placeholder="Any Time">
+                                            <input type="text" name="tour_time" placeholder="Any Time">
                                         </div>
                                     </div>
-                                    <div class="col-lg-4 col-md-12 col-sm-12 column">
-                                        <div class="form-group">
-                                            <input type="text" name="name" placeholder="Your Name" required="">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4 col-md-12 col-sm-12 column">
-                                        <div class="form-group">
-                                            <input type="email" name="email" placeholder="Your Email" required="">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4 col-md-12 col-sm-12 column">
-                                        <div class="form-group">
-                                            <input type="tel" name="phone" placeholder="Your Phone" required="">
-                                        </div>
-                                    </div>
+
                                     <div class="col-lg-12 col-md-12 col-sm-12 column">
                                         <div class="form-group">
                                             <textarea name="message" placeholder="Your message"></textarea>
@@ -274,6 +271,9 @@
                             </form>
                         </div>
                     </div>
+
+
+
                 </div>
             </div>
             <div class="col-lg-4 col-md-12 col-sm-12 sidebar-side">
@@ -288,7 +288,7 @@
                                 <div class="inner">
                                     <h4>Admin </h4>
                                     <ul class="info clearfix">
-                                        <li><i class="fas fa-map-marker-alt"></i>84 St. John Wood High Street, 
+                                        <li><i class="fas fa-map-marker-alt"></i>84 St. John Wood High Street,
                                         St Johns Wood</li>
                                         <li><i class="fas fa-phone"></i><a href="tel:03030571965">030 3057 1965</a></li>
                                     </ul>
@@ -314,7 +314,7 @@
 
                         <div class="form-inner">
 
-                            @auth 
+                            @auth
 
                             @php
                                 $id = Auth::user()->id;
@@ -379,7 +379,7 @@
                             @endauth
 
 
-                           
+
                         </div>
 
 
@@ -429,7 +429,7 @@
             </div>
             <div class="row clearfix">
                 @foreach($relatedProperty as $item)
-                
+
                 <div class="col-lg-4 col-md-6 col-sm-12 feature-block">
                     <div class="feature-block-one wow fadeInUp animated" data-wow-delay="00ms" data-wow-duration="1500ms">
                         <div class="inner-box">
@@ -442,10 +442,10 @@
                                 <div class="author-info clearfix">
                                     <div class="author pull-left">
                                       @if($item->agent_id == Null)
-                
+
                      <figure class="author-thumb"><img src="{{ url('upload/ariyan.jpg') }}" alt=""></figure>
                                 <h6>Admin </h6>
-                
+
                 @else
 
                 <figure class="author-thumb"><img src="{{ (!empty($item->user->photo)) ? url('upload/agent_images/'.$item->user->photo) : url('upload/no_image.jpg') }}" alt=""></figure>

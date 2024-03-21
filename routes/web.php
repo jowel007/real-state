@@ -312,7 +312,7 @@ Route::post('/rent/property/search', [IndexController::class, 'RentPropertySeach
 // All Property Seach Option
 Route::post('/all/property/search', [IndexController::class, 'AllPropertySeach'])->name('all.property.search');
 
- // Blog Details Route 
+ // Blog Details Route
  Route::get('/blog/details/{slug}', [BlogController::class, 'BlogDetails']);
  Route::get('/blog/cat/list/{id}', [BlogController::class, 'BlogCatList']);
  Route::get('/blog', [BlogController::class, 'BlogList'])->name('blog.list');
@@ -323,3 +323,7 @@ Route::post('/all/property/search', [IndexController::class, 'AllPropertySeach']
  Route::get('/admin/blog/comment', [BlogController::class, 'AdminBlogComment'])->name('admin.blog.comment');
  Route::get('/admin/comment/reply/{id}', [BlogController::class, 'AdminCommentReply'])->name('admin.comment.reply');
  Route::post('/reply/message', [BlogController::class, 'ReplyMessage'])->name('reply.message');
+
+
+// Schedule Message Request Route
+Route::post('/store/schedule', [IndexController::class, 'StoreSchedule'])->name('store.schedule');

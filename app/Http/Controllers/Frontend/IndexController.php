@@ -14,6 +14,7 @@ use App\Models\PropertyMessage;
 use App\Models\PackagePlan;
 use Auth;
 use Carbon\Carbon;
+use App\Models\Schedule;
 
 class IndexController extends Controller
 {
@@ -210,6 +211,9 @@ class IndexController extends Controller
 
     }// End Method
 
+    public function StoreSchedule(Request $request){
+        
+    }
 
 
 }
