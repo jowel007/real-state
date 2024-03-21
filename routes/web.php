@@ -255,6 +255,8 @@ Route::middleware(['auth','role:agent'])->group(function (){
          // Schedule Request Route
          Route::get('/agent/schedule/request/', 'AgentScheduleRequest')->name('agent.schedule.request');
 
+         Route::get('/agent/details/schedule/{id}', 'AgentDetailsSchedule')->name('agent.details.schedule');
+
      });
 
 

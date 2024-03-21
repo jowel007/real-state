@@ -533,4 +533,12 @@ class AgentPropertyController extends Controller
     }// End Method
 
 
+    public function AgentDetailsSchedule($id){
+
+        $schedule = Schedule::findOrFail($id);
+        return view('agent.schedule.schedule_details',compact('schedule'));
+
+    } // End Method
+
+
 }
