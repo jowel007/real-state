@@ -10,6 +10,7 @@ use App\Http\Controllers\Backend\PropertyController;
 use App\Http\Controllers\Backend\PlaceController;
 use App\Http\Controllers\Backend\TestimonialController;
 use App\Http\Controllers\Backend\BlogController;
+use App\Http\Controllers\Backend\SettingController;
 use App\Http\Middleware\RedirectIfAuthenticated;
 
 use App\Http\Controllers\Agent\AgentPropertyController;
@@ -200,6 +201,14 @@ Route::middleware(['auth','role:admin'])->group(function (){
         Route::get('/edit/post/{id}', 'EditPost')->name('edit.post');
         Route::post('/update/post', 'UpdatePost')->name('update.post');
         Route::get('/delete/post/{id}', 'DeletePost')->name('delete.post');
+    });
+
+
+    // all smtp route
+    Route::controller(SettingController::class)->group(function(){
+
+        Route::get('/smtp/settings', 'SmtpSettings')->name('smtp.settings');
+        
     });
 
 
