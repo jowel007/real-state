@@ -208,6 +208,7 @@ Route::middleware(['auth','role:admin'])->group(function (){
     Route::controller(SettingController::class)->group(function(){
 
         Route::get('/smtp/settings', 'SmtpSettings')->name('smtp.settings');
+        Route::post('/update/smpt/setting', 'UpdateSmtpSetting')->name('update.smpt.setting');
         
     });
 
